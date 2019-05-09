@@ -1,13 +1,7 @@
-<h1>Detail page</h1>
-<br>
+<h1>{{ board.title }}</h1>
 
 <div class="container">
-    <h1>{{ board.title }}</h1>
-    <p>{{ board.pub_date }}</p>
-    <p>{{ board.body }}</p>
-
-    <br>
-    <a href="{% url 'comment_new' board.id %}">댓글 추가하기</a>
+    <a href="{% url 'comment_new' board.id %}">댓글달기</a>
 
     {% for comment in board.comments.all %}
     <div class="comment">
@@ -20,6 +14,28 @@
     <p>아직 댓글이 없습니다! :</p>
     {% endfor %}
     
-    <hr>
-    <a href="{% url 'home' %}">돌아가기</a>
+</div>
+
+<br>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <a href="{% url 'comment_new2' board.id %}">댓글달기</a>
+
+    {% for comment2 in board.comments2.all %}
+    <div class="comment2">
+        <li>
+            {{ comment2.text }}<small>by <strong>{{ comment2.author }}</strong>, {{ comment2.created_at }}</small>
+        </li>
+    </div>
+
+    {% empty %}
+    <p>아직 댓글이 없습니다! :</p>
+    {% endfor %}
+    
 </div>

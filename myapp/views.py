@@ -6,6 +6,8 @@ from django.utils import timezone
 
 from .forms import CommentForm
 
+from .forms2 import CommentForm2
+
 # Create your views here.
 
 def home(request):
@@ -56,3 +58,16 @@ def comment_new(request, board_id):
     else:
         form= CommentForm()
     return render(request, 'board_form.html', {'form':form})
+
+def comment_new2(request, board_id):
+    post = get_object_or_404(Board, pk=board_id)
+    if request.method == "POST":
+        forms = CommentForm2(request.POST)
+        if forms.is_valid():
+            comment2 = forms.save(commit=False)
+            comment2.post = Board.objects.get(pk=board_id)
+            comment2.save()
+            return redirect('detail', board_id)
+    else:
+        forms= CommentForm2()
+    return render(request, 'board_form2.html', {'forms':forms})

@@ -25,3 +25,17 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+class Comment2(models.Model):
+    post = models.ForeignKey(Board, related_name='comments2', on_delete=models.CASCADE)
+    author = models.CharField(max_length=10)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text

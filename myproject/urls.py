@@ -27,4 +27,5 @@ urlpatterns = [
     path('myapp/edit/<int:board_id>', myapp.views.edit, name="edit"),
     path('myapp/update/<int:board_id>', myapp.views.update, name="update"),
     path('myapp/<int:board_id>/comments/new', myapp.views.comment_new, name='comment_new'),
+    path('myapp/<int:board_id>/comments/new2', myapp.views.comment_new2, name = 'comment_new2')
 ]
