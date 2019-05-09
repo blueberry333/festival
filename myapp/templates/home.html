@@ -1,14 +1,18 @@
-<h1>Home page입니다.</h1>
-<br>
 <div class="navbar">
     <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
-    <a class="nav-item nav-link" href="{% url 'new' %}">글쓰기</a>
 </div>
+<br>
+<br>
+<br>
 {% for board in boards.all %}    
 <div class="container">
     <a href="{% url 'detail' board.id %}">
     <h1>{{ board.title }}</h1>
+    제일 최신 대기정보 댓글 1<br>
+    제일 최신 대기정보 댓글 2 
     </a>
     <p>{{ board.pub_date_pretty }}</p>
+    <br>
+    <br>
 </div>
 {% endfor %}
